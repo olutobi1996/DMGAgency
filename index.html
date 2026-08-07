@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dominance Sports Group — Multi-Sport Athlete Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F14;
+    --panel:#111820;
+    --panel-2:#1A232D;
+    --gold:#F5B700;
+    --gold-dim:#8a6900;
+    --steel:#5C7FB8;
+    --text:#ECEFF3;
+    --muted:#8B95A3;
+    --line:rgba(255,255,255,.08);
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+  h1,h2,h3,.display{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.02em;
+    font-weight:400;
+    line-height:.95;
+    margin:0;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  img{max-width:100%;display:block;}
+
+  /* focus visibility */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,15,20,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:24px;
+    letter-spacing:.06em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo .dot{color:var(--gold);}
+  .nav-links{display:flex;gap:34px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;}
+  .nav-links a{color:var(--muted);transition:color .2s;position:relative;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    border:1px solid var(--gold);
+    color:var(--gold);
+    padding:9px 18px;
+    font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  }
+  .nav-cta:hover{background:var(--gold);color:#0B0F14;}
+  .nav-toggle{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:110px 0 0;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 20%, rgba(245,183,0,.10), transparent 45%),
+      linear-gradient(180deg,#0B0F14 0%, #0B0F14 100%);
+  }
+  .hero-grid-lines{
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 120px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:26px;height:1px;background:var(--gold);}
+  .hero-inner{position:relative;padding-bottom:64px;}
+  .hero h1{
+    font-size:clamp(56px,9vw,128px);
+    margin-top:18px;
+    color:var(--text);
+  }
+  .hero h1 span{color:var(--gold);}
+  .hero-sub{
+    max-width:520px;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.6;
+    margin-top:22px;
+  }
+  .hero-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:#0B0F14;
+    padding:15px 28px;
+    font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;
+    border:1px solid var(--gold);
+  }
+  .btn-primary:hover{background:transparent;color:var(--gold);}
+  .btn-ghost{
+    padding:15px 28px;
+    border:1px solid var(--line);
+    font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--text);
+  }
+  .btn-ghost:hover{border-color:var(--text);}
+
+  /* scoreboard ticker — signature element */
+  .scoreboard{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:#0D1319;
+  }
+  .scoreboard .wrap{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .score-cell{
+    padding:26px 20px;
+    border-left:1px solid var(--line);
+    text-align:left;
+  }
+  .score-cell:first-child{border-left:0;}
+  .score-num{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:700;
+    font-size:clamp(22px,3vw,34px);
+    color:var(--gold);
+    text-shadow:0 0 14px rgba(245,183,0,.35);
+    animation:flicker 4.5s infinite ease-in-out;
+  }
+  .score-cell:nth-child(2) .score-num{animation-delay:.6s;}
+  .score-cell:nth-child(3) .score-num{animation-delay:1.2s;}
+  .score-cell:nth-child(4) .score-num{animation-delay:1.8s;}
+  @keyframes flicker{
+    0%,92%,100%{opacity:1;}
+    94%{opacity:.55;}
+    96%{opacity:1;}
+  }
+  .score-label{
+    margin-top:6px;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  @media (max-width:700px){
+    .scoreboard .wrap{grid-template-columns:repeat(2,1fr);}
+    .score-cell:nth-child(3){border-left:0;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:110px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:40px;margin-bottom:56px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(36px,5vw,58px);}
+  .section-head p{max-width:380px;color:var(--muted);font-size:15px;line-height:1.6;}
+  .theme-alt{background:var(--panel);}
+
+  /* ---------- WHO WE ARE ---------- */
+  .who-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;
+  }
+  .who-grid p{color:var(--muted);font-size:16px;line-height:1.75;margin:0 0 18px;}
+  .who-grid p strong{color:var(--text);}
+  .who-stats{
+    display:grid;grid-template-columns:1fr 1fr;gap:1px;
+    background:var(--line);border:1px solid var(--line);margin-top:20px;
+  }
+  .who-stat{background:var(--bg);padding:24px;}
+  .who-stat .n{font-family:'Bebas Neue';font-size:44px;color:var(--gold);}
+  .who-stat .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-top:4px;}
+  .who-side{
+    border:1px solid var(--line);
+    padding:32px;
+    background:var(--panel-2);
+    position:relative;
+  }
+  .who-side::before{
+    content:'';position:absolute;top:0;left:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+  .who-side h3{font-size:26px;margin-bottom:14px;}
+  .who-side ul{list-style:none;margin:0;padding:0;}
+  .who-side li{
+    padding:12px 0;border-top:1px solid var(--line);
+    font-size:14px;color:var(--muted);display:flex;justify-content:space-between;
+  }
+  .who-side li span:last-child{color:var(--text);font-family:'JetBrains Mono';}
+
+  /* ---------- TICKER (news) ---------- */
+  .ticker-section{padding:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ticker-label{
+    background:var(--gold);color:#0B0F14;
+    font-family:'JetBrains Mono';font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    padding:8px 0;text-align:center;
+  }
+  .ticker-track{
+    overflow:hidden;white-space:nowrap;background:var(--panel);padding:22px 0;
+  }
+  .ticker-move{
+    display:inline-block;
+    animation:scroll-left 38s linear infinite;
+  }
+  .ticker-track:hover .ticker-move{animation-play-state:paused;}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .ticker-item{
+    display:inline-flex;align-items:center;gap:14px;
+    padding:0 40px;font-size:16px;
+  }
+  .ticker-item .tag{
+    font-family:'JetBrains Mono';font-size:11px;color:var(--gold);
+    border:1px solid var(--gold-dim);padding:3px 8px;text-transform:uppercase;letter-spacing:.06em;
+  }
+  .ticker-item .divider{color:var(--line);}
+
+  /* news cards below ticker */
+  .news-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;
+  }
+  .news-card{
+    background:var(--panel-2);border:1px solid var(--line);
+    padding:26px;transition:border-color .2s, transform .2s;
+  }
+  .news-card:hover{border-color:var(--gold-dim);transform:translateY(-3px);}
+  .news-card .tag{
+    font-family:'JetBrains Mono';font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;
+  }
+  .news-card h3{font-size:24px;margin-top:14px;line-height:1.1;}
+  .news-card p{color:var(--muted);font-size:14px;margin-top:10px;line-height:1.5;}
+  @media (max-width:860px){.news-grid{grid-template-columns:1fr;}}
+
+  /* ---------- SERVICES ---------- */
+  .services-block{margin-bottom:90px;}
+  .services-block:last-child{margin-bottom:0;}
+  .services-top{display:flex;gap:30px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;margin-bottom:36px;}
+  .services-top .tag-line{font-family:'JetBrains Mono';color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:.14em;}
+  .services-top h3{font-size:clamp(30px,4vw,46px);margin-top:8px;}
+  .service-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .service-item{background:var(--bg);padding:30px 26px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;}
+  .service-item .num{font-family:'JetBrains Mono';color:var(--muted);font-size:12px;}
+  .service-item h4{font-family:'Inter';font-weight:700;font-size:17px;margin-top:26px;}
+  @media (max-width:860px){.service-list{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.service-list{grid-template-columns:1fr;}}
+
+  /* ---------- TEAM ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .team-card{border:1px solid var(--line);background:var(--panel-2);overflow:hidden;}
+  .team-photo{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg,#1c2733,#0d1319);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .team-photo .initials{
+    font-family:'Bebas Neue';font-size:54px;color:var(--gold);opacity:.85;
+  }
+  .team-info{padding:18px 18px 22px;}
+  .team-info h3{font-family:'Inter';font-weight:700;font-size:16px;}
+  .team-info p{color:var(--muted);font-size:12.5px;margin-top:4px;text-transform:uppercase;letter-spacing:.04em;}
+  @media (max-width:860px){.team-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- NETWORK / OFFICES ---------- */
+  .network-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .network-cell{background:var(--panel);padding:28px 22px;}
+  .network-cell .flag{font-family:'JetBrains Mono';font-size:11px;color:var(--gold);letter-spacing:.1em;}
+  .network-cell h3{font-family:'Inter';font-weight:700;font-size:18px;margin-top:10px;}
+  .network-cell p{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.6;}
+  @media (max-width:960px){.network-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:30px;
+    border:1px solid var(--line);padding:56px;background:var(--panel-2);position:relative;overflow:hidden;
+  }
+  .contact-wrap::after{
+    content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(245,183,0,.15),transparent 70%);
+  }
+  .contact-wrap h2{font-size:clamp(32px,5vw,54px);max-width:560px;}
+
+  footer{border-top:1px solid var(--line);padding:50px 0 30px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:40px;}
+  .footer-links{display:flex;gap:30px;font-size:13px;color:var(--muted);flex-wrap:wrap;}
+  .footer-links a:hover{color:var(--text);}
+  .footer-bottom{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;flex-wrap:wrap;gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">DOMINANCE<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#who">Who We Are</a>
+      <a href="#team">Our Team</a>
+      <a href="#services">Services</a>
+      <a href="#network">Offices</a>
+    </div>
+    <a class="nav-cta" href="#contact">Contact Us</a>
+    <button class="nav-toggle" aria-label="Menu">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Multi-Sport Athlete Management</span>
+    <h1>OWN EVERY<br><span>ARENA</span></h1>
+    <p class="hero-sub">Dominance Sports Group represents elite competitors across football, basketball, athletics, boxing and tennis — building careers that outlast the scoreboard.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">Start a Conversation</a>
+      <a class="btn-ghost" href="#services">Explore Services</a>
+    </div>
+  </div>
+  <div class="scoreboard">
+    <div class="wrap">
+      <div class="score-cell">
+        <div class="score-num mono">180+</div>
+        <div class="score-label">Athletes Represented</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-num mono">$420M</div>
+        <div class="score-label">Career Earnings Negotiated</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-num mono">06</div>
+        <div class="score-label">Sports Covered</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-num mono">12</div>
+        <div class="score-label">Countries Active</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Guiding Every<br>Chapter Of The Game</h2>
+    </div>
+    <div class="who-grid">
+      <div>
+        <p><strong>Dominance Sports Group</strong> was built on a simple belief: an athlete's career is bigger than any single contract. We work across six sports because talent doesn't stay in one lane — and neither should representation.</p>
+        <p>From a rookie's first professional deal to a veteran's transition into ownership, media or coaching, our teams stay close to the people we represent and the families behind them. We negotiate hard, plan further ahead, and treat every relationship as a decade-long commitment, not a single transaction.</p>
+        <div class="who-stats">
+          <div class="who-stat"><div class="n">2011</div><div class="l">Founded</div></div>
+          <div class="who-stat"><div class="n">46</div><div class="l">Agents & Advisors</div></div>
+          <div class="who-stat"><div class="n">5</div><div class="l">Global Offices</div></div>
+          <div class="who-stat"><div class="n">98%</div><div class="l">Client Retention</div></div>
+        </div>
+      </div>
+      <div class="who-side">
+        <h3>Sports We Cover</h3>
+        <ul>
+          <li><span>Football</span><span>62 Athletes</span></li>
+          <li><span>Basketball</span><span>41 Athletes</span></li>
+          <li><span>Athletics</span><span>29 Athletes</span></li>
+          <li><span>Boxing</span><span>18 Athletes</span></li>
+          <li><span>Tennis</span><span>21 Athletes</span></li>
+          <li><span>Rugby</span><span>14 Athletes</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ticker-section">
+  <div class="ticker-label">Latest Moves</div>
+  <div class="ticker-track">
+    <div class="ticker-move">
+      <span class="ticker-item"><span class="tag">Signing</span> Elena Marchetti joins Dominance from a rival agency</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Deal</span> Marcus Iheanacho agrees multi-year boot deal with Kinetic</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Transfer</span> Dario Novak completes move to a top European basketball club</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Contract</span> Ade Coker extends terms through the next Olympic cycle</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Brand</span> Priya Anand fronts new global apparel campaign</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Signing</span> Elena Marchetti joins Dominance from a rival agency</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Deal</span> Marcus Iheanacho agrees multi-year boot deal with Kinetic</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Transfer</span> Dario Novak completes move to a top European basketball club</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Contract</span> Ade Coker extends terms through the next Olympic cycle</span>
+      <span class="divider">/</span>
+      <span class="ticker-item"><span class="tag">Brand</span> Priya Anand fronts new global apparel campaign</span>
+    </div>
+  </div>
+</section>
+
+<section class="theme-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Company News</h2>
+      <p>A running record of the signings, deals and milestones shaping our roster.</p>
+    </div>
+    <div class="news-grid">
+      <div class="news-card">
+        <span class="tag">Signing</span>
+        <h3>Elena Marchetti Joins Dominance</h3>
+        <p>The Italian sprinter moves to Dominance ahead of the new athletics season, bringing our track roster to 29 athletes.</p>
+      </div>
+      <div class="news-card">
+        <span class="tag">Brand Deal</span>
+        <h3>Priya Anand Fronts Global Campaign</h3>
+        <p>Our tennis client headlines a season-long apparel partnership spanning three continents.</p>
+      </div>
+      <div class="news-card">
+        <span class="tag">Transfer</span>
+        <h3>Dario Novak's European Move</h3>
+        <p>The forward completes a four-year transfer, one of the largest basketball moves of the window.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="services-block">
+      <div class="services-top">
+        <div>
+          <span class="tag-line">Services / On The Field</span>
+          <h3>Built To Perform</h3>
+        </div>
+      </div>
+      <div class="service-list">
+        <div class="service-item"><span class="num mono">01</span><h4>Contract Negotiation</h4></div>
+        <div class="service-item"><span class="num mono">02</span><h4>Transfer & Trade Strategy</h4></div>
+        <div class="service-item"><span class="num mono">03</span><h4>Performance Analytics</h4></div>
+        <div class="service-item"><span class="num mono">04</span><h4>Injury & Wellness Support</h4></div>
+        <div class="service-item"><span class="num mono">05</span><h4>Long-Term Career Planning</h4></div>
+        <div class="service-item"><span class="num mono">06</span><h4>Legal & Regulatory Counsel</h4></div>
+      </div>
+    </div>
+    <div class="services-block">
+      <div class="services-top">
+        <div>
+          <span class="tag-line">Services / Off The Field</span>
+          <h3>Built To Last</h3>
+        </div>
+      </div>
+      <div class="service-list">
+        <div class="service-item"><span class="num mono">07</span><h4>Brand Partnerships</h4></div>
+        <div class="service-item"><span class="num mono">08</span><h4>Media & Broadcast</h4></div>
+        <div class="service-item"><span class="num mono">09</span><h4>Content Production</h4></div>
+        <div class="service-item"><span class="num mono">10</span><h4>Social Growth Strategy</h4></div>
+        <div class="service-item"><span class="num mono">11</span><h4>Public Relations</h4></div>
+        <div class="service-item"><span class="num mono">12</span><h4>Community & Legacy Projects</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="team" class="theme-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Meet Your Team</h2>
+      <p>The agents, strategists and advisors working behind every deal.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">MR</span></div>
+        <div class="team-info"><h3>Marcus Reid</h3><p>Founder & Chief Executive</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">SK</span></div>
+        <div class="team-info"><h3>Sofia Kovač</h3><p>Head of Football</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">TB</span></div>
+        <div class="team-info"><h3>Tomas Berg</h3><p>Head of Basketball</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">NA</span></div>
+        <div class="team-info"><h3>Nadia Achebe</h3><p>Director of Brand Partnerships</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">JL</span></div>
+        <div class="team-info"><h3>James Lindqvist</h3><p>Chief Financial Officer</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">RP</span></div>
+        <div class="team-info"><h3>Rosa Pereira</h3><p>Head of Athletics & Boxing</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">DO</span></div>
+        <div class="team-info"><h3>David Okafor</h3><p>Performance Director</p></div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo"><span class="initials">HW</span></div>
+        <div class="team-info"><h3>Hana Watanabe</h3><p>Head of Legal Counsel</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="network">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Global Talent<br>Network</h2>
+      <p>Five offices, one standard of care, wherever the season takes our athletes.</p>
+    </div>
+    <div class="network-grid">
+      <div class="network-cell">
+        <div class="flag">UK</div>
+        <h3>London</h3>
+        <p>Griffin House,<br>14 Lambton Road,<br>London, SW20 0LW</p>
+      </div>
+      <div class="network-cell">
+        <div class="flag">USA</div>
+        <h3>Miami</h3>
+        <p>2200 Biscayne Boulevard,<br>Suite 410,<br>Miami, FL 33137</p>
+      </div>
+      <div class="network-cell">
+        <div class="flag">NGA</div>
+        <h3>Lagos</h3>
+        <p>17 Adeola Odeku Street,<br>Victoria Island,<br>Lagos</p>
+      </div>
+      <div class="network-cell">
+        <div class="flag">UAE</div>
+        <h3>Dubai</h3>
+        <p>Level 22, Boulevard Tower,<br>Downtown Dubai,<br>UAE</p>
+      </div>
+      <div class="network-cell">
+        <div class="flag">SGP</div>
+        <h3>Singapore</h3>
+        <p>1 Marina Boulevard,<br>#18-02,<br>Singapore 018989</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="theme-alt">
+  <div class="wrap">
+    <div class="contact-wrap">
+      <h2>Ready to talk<br>about your career?</h2>
+      <a class="btn-primary" href="mailto:info@dominancesportsgroup.com">Email Us At DSG</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="logo">DOMINANCE<span class="dot">.</span></div>
+      <div class="footer-links">
+        <a href="#who">Who We Are</a>
+        <a href="#team">Our Team</a>
+        <a href="#services">Services</a>
+        <a href="#network">Offices</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dominance Sports Group</span>
+      <span>Multi-Sport Athlete Management</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
