@@ -303,7 +303,67 @@
   .foot-col a{color:var(--grey);transition:color .3s;}
   .foot-col a:hover{color:var(--white);}
   .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:'IBM Plex Mono';font-size:11px;color:var(--grey);letter-spacing:.04em;border-top:1px solid var(--line);padding-top:24px;}
+/* ---------------- CONTACT SOCIAL ---------------- */
+.contact-social .instagram-link{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  position:relative;
+}
+
+.instagram-icon{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  flex-shrink:0;
+}
+
+.contact-social .instagram-link::after{
+  left:34px;
+}
+
+.contact-social .instagram-link:hover .instagram-icon{
+  transform:scale(1.05);
+}
+
+.instagram-icon{
+  transition:transform .3s var(--ease);
+}
+/* ---------------- FOOTER INSTAGRAM ---------------- */
+.foot-instagram{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:var(--grey);
+  transition:color .3s ease;
+}
+
+.foot-instagram .instagram-icon{
+  width:15px;
+  height:15px;
+  stroke-width:1.7;
+}
+
+.foot-instagram:hover{
+  color:var(--white);
+}
+
+@media (max-width:700px){
+  .foot-bottom{
+    align-items:flex-start;
+  }
+
+  .foot-instagram{
+    order:3;
+    width:100%;
+  }
+}
 </style>
+
 </head>
 <body>
 
@@ -311,9 +371,7 @@
   <nav class="wrap">
     <a class="nav-mark" href="#top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAGNCAYAAABUn2ncAAAXCUlEQVR4nO3df4id1Z3H8c8skyUpJCVZjJCUZEFFxRRiMQtmaRazYMQIuphSF3ZB94+UKriwwipsSlM2hVpIQUsqG2FTUDDSCBXWgIFVVjGBKmb/mGCCCWxCIzRixASa0AnM/nHmmjuTmXuf+9zne77nx/sFlzHj3PN8Z+69n3vueZ5zzsTMzIwAAN37M+8CAKBUBCwAGCFgAcAIAQsARghYADBCwAKAEQIWAIwQsABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABghYAHAiGXALjVsG/x9gXFNyvh1ZBGwD0r6naQrkma4md16f9+Hmz0sN3hc4XHy/j1Kvn0haZ+ke5o9JHM8LOmTBH6Hkm/TCq+jTyTd1+xhGc2Ewa6ySxWKRhxXJH2jxf06f+CxqJ2SXh7xPvskPWlQCxa2X9IPum7Uoge736BNLG6ZdwEY6sEW93ms8yowyE5J67pu1CJgzxi0CeTsaov7rOq8CgwyLelc141aBOxlgzaBnLU5kTLdeRUY5JpFoxYBy0dWYK42nQ7OY8RlklsWATtp0CaQs6kW92kzrIDEMNGgTjd5F1CZNr2j1Z1XgegsAtZkLAOdWuJdQGVOtrjPpc6rwCAmY94WAcsTI30M48T1kXcBGMqk08EQQZ04gQJEQMDWiUvpgAgI2DpxhhqIgJNcAGCEHiwAGCFgAcAIAQsARhiDBey1WeyF11EB6MECgBEWewEAI/RgAcAIAQsARhgiAAAj9GABwAgBCwBG2JMLsPeldwHwYRGwrJYPAGJHAwAwYxGwnxm0CQDZsQjYTQZtAkB2LAL2uEGbAJAdi0kBr0vaJmm9pI2Spma/nlLY6/2CwTFjWqPwO/RWO5qUtErh98Vwp3X9b3dNYbvkLleOWq6w51jvuX1G0haF5x6ae0/SLQqv23UKz/llGv+xmlR4fHpZsFrSRUlrVeBraGJmZsa7hlJ4/iEnWtzHq942tXbB8/FZq9HPTXyh8Mbt4RFJb0Y+5lL573bc+XOTiQaAvTUt7uMZNqcdjlnkRpwELAAYIWABwAgBC9hjdmOlCFjAHkt4VoqABQAjBCxgjx5spQhYADBCwAL2TnkXMCKPk3JF9vIJWAApWO5dgAUCFkAKCNhMFPlRAygcATuCmb7bH+f92/r2tNHvBAAjsQjY1+b9O/YmiHsjHw/A+FjspaGLBm0CKFuRe/lZBGzsdSQB5I8ebEPFrUoOOKhtgZjL3gVYKPEqAiA1sc9DIBEELGBvqXcB8EHAAvZWeBcAHxYBy4X+wFwrvQuAD3qwgL0iZylhOAIWsMdJrkoRsIC92i65wizGYAF7F7wLgA96sABghIAF7E17FwAfFgF7zaBNIGe8JipFDxawd8W7APggYAF79GArxRABYI8x2ErRgwXs0emolEXAMt4EzHXWuwD4oAcLAEYIWAAwQsACgBECFgCMELAAYISABQAjBCwAGLEIWLbHAObiNVEperAAYISABQAjBCwAGCFgAcAIAQsARghYADBCwAKAEYuAXWbQJpAzXhOVogcL2Jv0LgA+CFjA3hLvAuCDgAXsMVW2UgQsYI8x2EoRsIA9ArZSBCxgb6l3AfBBwAL2OMlVKYuAvWLQJpCz8y3u43lp17TjsYtCDxawd827APggYAF7fKqrFAEL2LvsXQB8ELCAPQK2UgQsYI+ArRQBC9hjDLZSBCxgj6sIKmURsDyZgLlyW+yF13BH6MECgBECFgCMELAAYISABQAjBCwAGCFgAcAIAQsARiwCli2KgbzxGu4IPVjAHoGVvksWjRKwACBdtWiUIQLAHlNP02eSW/RgAXu5rUVQIwIWGIPnkoFrHI+NZs5ZNErAohY7HY895XhsNLPLolGLbjF7wCNFr0o6q+sf15coPP8n+/4tDX9NLBvy/z9T2KZ7laTtkvbK6ARKgbYrPA7LZ2+TCuPX13T9sRp3PHv5bBtnFR6jlZI+lPTumO0uyCJg2VMdqXo/8vGOjHFfz5PFXiflDjsd1wxDBABghIAFACNsGQMARujBAoARAhYAjDBEAABG6MECgBGLgOU6WGB8TE4oAD1YADBCwAKAEQIWAIywODZiWyPp8uxNmruIxzVJt/d9f4nC4ir9i7Jc6/s6Pe/rNYWFVvrNv6pl2GItw5Y1bHKVzLrZr9sVVtKKvQZCCiYVFlbpPX69xXR6W7P0FtuZ/9/9zwv1/f+e3mI9vXM9vce9/3v9C8b0bitm2/xM0kWFx/mMpE2z3zdZB4GARWzzA7AGmyR95F2EsRnvAsa0Q9IbXTfKEAFgb4d3AcZuH/4jydtr0SgBC9irsdeem9UWjVoELAtuA3OVPrvxlHcBqaIHCwBGCFjAnueGi3BEwAL2Sh8iwCIIWMAePdhKEbCAPQK2UgQsYI8hgkoRsABghIAF7B33LgBDDVujohUCFgCMELCAPcZgK0XAAoARAhYAjBCwgD2GCCpFwAKAEQIWAIwQsIC96eE/ghIRsABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhawt8q7AGOT3gWkioAFMK7l3gWkioAFMK7L3gWkioCt14veBaAY1ySd9i4iRQRsvf5Z0oTBbYlhu+O0DVu3SVqh0R+XZbNfN8cv2R6D0+ia1dqnrKmavjZDBVdnvx7rspBU0IMFACMELAAYIWABe5xlrxQBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABixCNgrBm0iHcslLfUuIjNMSa8UPdh63SvpA0kfS/qTpJmGt0sKb6KDfuaPkr6S9AdJv+9r/wtJP4zxywEp4J21XkcN2142e1sx7/urJP1K0kuGxwaSQQ8WAIwQsABghIAFACMELAAYIWABwAgBi9hq3BxvmXcB8EHAAoARAhaxsXkhqkHAAoARAhawx4zJShGwiI0hAlSDgAUAIwQsYG+JdwHwYRGwjDdhkEveBTi44F0AfNCDRWxXvQsAYiFgEdu0dwFALAQsYmM8EtUgYBHbOu8CgFgIWMR2q3cBQCwELAAYIWDhYbl3AUAMBCw8XPYuAIjBImBZXBhAbkwmwFgELIt5ABjVSufjm0yAsQjYKYM2AZRtg/PxTQLeImCPGbQJoGxbnI9vMgGm1JNcS70LADCS7zof/6RFo6UG7N3eBQAYyb3Ox3/ZotFSA/YW7wIAjGSF8/EPWjRaasBu9y4Ai3reuwAHua2RXOOVQJ9ZNFpqwOb2hAbgyyQzSg3YGt+BkS7e8NNnMkHKKmC9t8hgrjtSwhq4g3mf4JIy68HuMWq3KcZgkRJ6sINt9S5A0hWLRq0C9pdG7QI5ogc72Ebn419SRlNlU3GPdwHALHqwg+1wPv6LVg2XHLB3eBcAIAtHrBouOWD/zbsALGijdwEO2px0NVk+ryF63B0pOWDpwaaJ8Uj0e9S7AElnrBq2DNidhm035b3GJG5UY++I67IXd8i7ABnN4pJsA9Zk8YQReS+BhhvVuOPFtHcBWNR7lo2XPEQgSS94F4Ab1DgJhB7swryXKJSkNy0bLz1g13sXgBvU2IMlYBeWwvCA6Q4s1gGbwkej+70LwBw1BmwKr4MUrfYuQNKHlo1bB+wzxu038bB3AZijxpNcuFEqu458adm4dcAeNm6/iSe9C8Acq7wLcHDZu4ARxXgTNJn7P6Kj1gewDtjzxu03lcJgOoC0mOxi0M86YE0WUGhhv3cBAL6WSofHbIpsT4yrCFIIN2Z1AekwvfZ0BKesDxAjYJ+LcIwm7vMuAJLSGHuDn1Q2JH0lxkFiBKzpWboRvONdACTld8IH3Upl8s+rMQ4Sa6JBKh8J7vIuAK6rRMFfKruNmF7/2hMrYFO5VGq3dwFI5sQn4kvl2tcLivTJOlbAnoh0nGF2iBW2vL3tXYCD3KbKWtR7k9IZf3821oFKX4tgITW+wAFv0UKtgWjnY2IGbArrw0rSJkkPehcBVCaFafOSdFHSuVgHixmwKawP2/OWdwFART71LqBP1I5e7CGClD6es+ssYG+dpFu9i+jzRsyDxQ7YByIfb5Aol2kAlTvrXUCf6J9cazzJ1e817wKAgn3fu4B5op8H8gjYHQ7HXMxj3gUABTNfrWpEZpsbLsYjYKOOgTTwP94FVGatdwEOcltkvIt6/7ODNrq01eOgXkMEF52Ou5Atkn7oXQRQkHskPeFdxDzRe6+SX8Cmtp32r8QML9jJrQc7rtROIO+RdMbjwF4PfCpTZ/tdlDThXQSKtMS7gIi+8i5gAT/yOrDnVQQpLoL9O+8CUKRadtL9F0krvIuYZ6/nwT0D1nw18RY2SfqN6vtIB1s1PJ9+I+cwW4Trgv/e18Fudj7+QnYonc0aUYbSA3af0rr8sme/nFcy8w7YY87HX8xqSRu9i0AxSh6DfVDprPc834veBXgHrBTCLEXHJd3vXUSBpr0LcLC+xX08xzKbLor+uNJdOGm/EjiZnkLAfu5dwABvKwzcAzVp8iZ4v6QD1oWM4RfeBUhpBKyU9uyevZL+w7sIZC23Xvuwqx5eUFor4823X4mcRE8lYF1mWYxgp6T/8i4C2cpty5hBJ+V+JunpWIW09APvAnpSCVgpzeti+22X9EHfv0s/M4zu5NaDXewN4VGltfXLQpJawCmlgD0laZd3EUNs1vXJCLn1SuAnt+fKQp2HTyUdil3IiE5Ket27iH4pBawk/dS7gAY2SZpRWKkdaCK3gO0fg12jMP01pV0JFnOndwHzpRawUgiwHJxV+MgElKa3vfZ9CpNuUpv+upD93gUsJMWA/UhhdascHJL0Y+8iMpPE2d3IprwLaOFRRdzeugPJnNjql2LAStJT3gWMYLfCkAFQiimlP97aL7XlT7+WasBKiZ0NRGeuDP8RoLFDkt73LmIxKQdsUmcD0RkCFl36nncBg6QcsJK0yrsAdO6ydwEoxjbvAoZJPWC/VPoTEDAaerDowtOSjngXMUzqASuFs86prtiD0RGwGNdRSb/0LqKJHAJWkh4SL0wAwUPeBTSVS8BKYajguHcRGFvKK6dZabNuBWtdLGxCYegwCzkF7DklfsYQjRAcaCu78zE5BawU9jbPZSotFkbAoo1nlOEswNwCVgpTaXd7F4HWSt6fCjbeUSI7FIwqx4CVpJ8o3Y3WMNiw1fKBfqcl/a13EW3lGrCS9JKk572LwMgYIkBTRyXd5l3EOHIOWEl6ToRsbujBoonjkv7au4hx5R6wUgjZg95FAOjMSUnf8S6iCyUErCT9vZjtlYvc9qfqAsMize1WBmsMNFVKwEphdgchm74aryKo8Xdu44KkAwrXvBehpICVQsgyXJC2GntzNf7Oozop6WYVFK5SeQErheGCPd5FYFE19uY4sTfYe0pww8IulBiwkvQjcXVBqpZ6F+CAgF3ch5L+xrsIK6UGrBSuLnjGuwjcoMawYYhgYXuV8H5aXSj9gf+FpGMKFywjDQwRQJI2K7w2i1ZyD7bnmMISZ0hD6W/qGG67KghXqY6A7dkg1i9IwXrvAhycbXGfa51X4e+gQmfnsHchsdTUmzgxe7ugvPZ8B0rwpKRXvYuIraaA7XlDYUyMLWiAODYodG6qU9MQQb+rCh9VfutcB+pQ4sf9Jo4qvM6qDFep3oDt+TsVNO8ZSMizKmA1rHHVOEQw3xGFd9kZ70KAAkwrLJD9vnchKai9B9tvmZiYABu1rCD2tqQ/F+H6NQL2uqsKExO2ehcCZOgRSQ94F5EaAvZG7yoMGUx5F1Koy94FOGhzkutS51XYWS3pTe8iUkTALu7b4npZdKPUcx1vSVoh6XPvQlJFwA72PYU508A4Slx/YavC+ss1fiJpjIAdjrUMMK6SerBTCuOt7zrXkQUCtrkJSY95F4EsldKDfVZh6Izx1oYI2NG8LmmXdxHITgk92AOSfu5dRG4I2NH9VGFuNdBU7gF7h6R/8i4iRwRsOycUhgwueBcCGPpQ4Xl+yruQXBGw47lZ4d0dzdU4kWNVi/us6LyK0WyR9FfONWSPgB3fKXGVAcrypJju2gkCtjsTCnOxgflyWa7wHYXn8UvehZSCgO3WA2LIADfKYbGX3QqrYKFDuZ/dTFFvyOD3ktY614I0pN6DZYjLCD1YO9+S9IR3EUhCqj3YkyJcTRGwtn6tsM4s6pZiD3azpDu9iygdQwT2evt/sWMCUnGrpDPeRdSAHmw8E+LjWK0+a3GfpZ1XIW1XeA4SrpEQsPExZAAPT0g67F1EbRgiiK83ZPCJuKQL9k4rrIB11buQGtGD9XOnpH/0LgJF2yPpNhGubiZmZjj34uwujb//V5uxXc8H3mMs2vP3XaHRV/7/SuOtR7BFTHd1Rw/WX29lrgPehaAIBxQmuBCuCaAHm5Z7JR1tcT96sMPV0IM9INZtTQonudLS2//rY0l3O9diaakYF+walwAmiCGCNH1H0rYRfn65VSFGYl+q5t2RaHNN65cNf+55Ea7JImDTdURhxk0TuW2d/Frk4/0s8vHma7Pp4foGP7NN0nMt2kYkjMHm4XENPgmW2xhsT4wpmyn8nms1+myuQauxXZT0F2NVhCjowebh1wrTHBfj/RG4rdOS/tWo7duVRri2dWWR768X4ZoNerD52aewpUe/XHuw/bocR/xUzYdXYmjTg13o8Vkt6fPxy0Es9GDz85Skp72LMDAj6cdjtnHfbDsphavU7hNG//ZDRxXegAjXzNCDzdufFAL35Rb3TfWB3y/p5xp9bDa1Xmu/9ZLOjXiflQpjrW9JeqjzihAFAVuv1B/4DQqz3Jp4QWn36tsELArAEAFSNSXp34f8zF0KbxQph6skbfUuAD4IWKRsl6T/W+T/fV/jL5ITyyrvAuCDgEXq1iv0Uv9h9t+Tkj6QdNCtotE1mTSAAhGwdVrjXUALrygE7bTChn05WeldAHwQsHVi25q42kyVRQEI2DpNexdQmYveBcAHAVun3BaHyV2bXWVRAAK2TovNc4cNerCVImDrtMG7gMrwiaFSzOSqFw98PCyIXSl6sPXi2sw4NnkXAD8EbL3OKfSsnvEupFC7FP6+H3kXAj8MEUAKc/pzmXaag51qt8IZCkPAoucuSb9Vukv+5eCKwt+Py7IgiSECXHdC0m2S9ngXkqmDkr4hwhV96MFiIQwZjCbG5o3IEAGLQT6WdLd3EQm7otBrBRbEEAEG2ay8lgWMaY8IVwxBDxZNrJF03ruIhHCVABohYNHULQp7X233LsQZs7LQGEMEaOqMwu6ma70LcfKECFeMiB4s2qjtKoPNko55F4H80INFGycUenNvexdi7LzC70m4ohUCFuN4QOWuZXBI0re8i0DeGCJAV76StMK7iA5MSXpW0mHvQpA/AhZd+m9JW72LGMN5Sd+W9KV3ISgDAYuu3STpgncRLTwi6U3vIlAWAhZWcnpirRK9VhjgJBesTCiMZabsFYU6CVeYoAcLa9+V9J53EQtguivMEbCwtFzXd1RN6SqD3ZJ+4l0EyscQASz1b1f9TUnbvAqZdUhhSIBwRRT0YBGb11UGWyW963BcVIyAhZeYQwZcJQAXDBHAyzcl7Tc+xpS4SgCO6MHC20ZJxw3avUPSKYN2gcbowcLb/yr0Ms922OZ2Ea5IAAGLVPylpPVjtrFbIaxZqAVJIGCRgsnZr+cU1gRo41lx+RUSwxgsUrVP0pMNfu4tha1sgOTQg0WqntLwiQm7RbgiYfRgkYM/SFo973tsQIjk0YNFDm6WtGf2v/eLcEUm6MECgBF6sABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABghYAHACAELAEYIWAAwQsACgBECFgCMELAAYISABQAjBCwAGPl/+zsPc9bA9AgAAAAASUVORK5CYII=" alt="Dominance Sports Group logo"><span>Dominance Sports Group</span></a>
     <div class="nav-links">
-      <a href="#who">Who We Are</a>
       <a href="#people">The People</a>
-      <a href="#why">Why Join</a>
       <a href="#contact">Contact</a>
     </div>
     <div class="nav-contact">+44 7591 153599</div>
@@ -332,24 +390,10 @@
     <div class="sweep" aria-hidden="true"></div>
   </div>
   <h1 class="hero-name mono">DOMINANCE SPORTS GROUP</h1>
-  <p class="hero-tagline">REPRESENTATION BUILT ON RELATIONSHIPS, NOT TRANSACTIONS</p>
+  <p class="hero-tagline">THE ART OF DOMINANCE</p>
   <div class="scroll-cue">
     <span>Scroll</span>
     <div class="scroll-line"></div>
-  </div>
-</section>
-
-<!-- PLACEHOLDER: "Who We Are" copy below is generic placeholder text — no source copy was supplied for this section. Replace with real company description. -->
-<section id="who">
-  <div class="wrap">
-    <div class="eyebrow"><span class="idx">01</span><span class="rule"></span><span>Who We Are</span></div>
-    <div class="who-grid">
-      <h2 class="reveal-init">DOMINANCE<br>SPORTS GROUP</h2>
-      <div class="who-copy reveal-init">
-        <p>Dominance Sports Group is a sports representation and management company built around direct, long-term relationships with the athletes we work with.</p>
-        <p>Our approach is personal rather than procedural — every athlete works closely with the people leading the company, not a rotating cast of case managers.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -383,41 +427,6 @@
   </div>
 </section>
 
-<!-- PLACEHOLDER: the four principles below (Representation, Development, Opportunity, Long-Term Vision) are placeholder categories — no source copy was supplied for this section. -->
-<section id="why">
-  <div class="wrap">
-    <div class="eyebrow"><span class="idx">03</span><span class="rule"></span><span>Why Join Dominance</span></div>
-    <div class="why-head">
-      <h2 class="reveal-init">Every decision is made<br>with one thing in mind —<br>the athlete's career.</h2>
-    </div>
-    <div class="why-list">
-      <div class="why-item reveal-init">
-        <span class="num">01</span>
-        <div><h3>Representation</h3><p>Direct access to the people making decisions on your career, not a call centre of account managers.</p></div>
-      </div>
-      <div class="why-item reveal-init">
-        <span class="num">02</span>
-        <div><h3>Development</h3><p>A long-term view on where a career is heading, not just the next contract on the table.</p></div>
-      </div>
-      <div class="why-item reveal-init">
-        <span class="num">03</span>
-        <div><h3>Opportunity</h3><p>Relationships across clubs, brands and territories that open doors before they're publicly available.</p></div>
-      </div>
-      <div class="why-item reveal-init">
-        <span class="num">04</span>
-        <div><h3>Long-Term Vision</h3><p>Planning for what comes after playing days end, not only what happens during them.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="statement">
-  <div class="wrap">
-    <img class="statement-mark reveal-init" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVgAAAGNCAYAAABUn2ncAAAXCUlEQVR4nO3df4id1Z3H8c8skyUpJCVZjJCUZEFFxRRiMQtmaRazYMQIuphSF3ZB94+UKriwwipsSlM2hVpIQUsqG2FTUDDSCBXWgIFVVjGBKmb/mGCCCWxCIzRixASa0AnM/nHmmjuTmXuf+9zne77nx/sFlzHj3PN8Z+69n3vueZ5zzsTMzIwAAN37M+8CAKBUBCwAGCFgAcAIAQsARghYADBCwAKAEQIWAIwQsABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABghYAHAiGXALjVsG/x9gXFNyvh1ZBGwD0r6naQrkma4md16f9+Hmz0sN3hc4XHy/j1Kvn0haZ+ke5o9JHM8LOmTBH6Hkm/TCq+jTyTd1+xhGc2Ewa6ySxWKRhxXJH2jxf06f+CxqJ2SXh7xPvskPWlQCxa2X9IPum7Uoge736BNLG6ZdwEY6sEW93ms8yowyE5J67pu1CJgzxi0CeTsaov7rOq8CgwyLelc141aBOxlgzaBnLU5kTLdeRUY5JpFoxYBy0dWYK42nQ7OY8RlklsWATtp0CaQs6kW92kzrIDEMNGgTjd5F1CZNr2j1Z1XgegsAtZkLAOdWuJdQGVOtrjPpc6rwCAmY94WAcsTI30M48T1kXcBGMqk08EQQZ04gQJEQMDWiUvpgAgI2DpxhhqIgJNcAGCEHiwAGCFgAcAIAQsARhiDBey1WeyF11EB6MECgBEWewEAI/RgAcAIAQsARhgiAAAj9GABwAgBCwBG2JMLsPeldwHwYRGwrJYPAGJHAwAwYxGwnxm0CQDZsQjYTQZtAkB2LAL2uEGbAJAdi0kBr0vaJmm9pI2Spma/nlLY6/2CwTFjWqPwO/RWO5qUtErh98Vwp3X9b3dNYbvkLleOWq6w51jvuX1G0haF5x6ae0/SLQqv23UKz/llGv+xmlR4fHpZsFrSRUlrVeBraGJmZsa7hlJ4/iEnWtzHq942tXbB8/FZq9HPTXyh8Mbt4RFJb0Y+5lL573bc+XOTiQaAvTUt7uMZNqcdjlnkRpwELAAYIWABwAgBC9hjdmOlCFjAHkt4VoqABQAjBCxgjx5spQhYADBCwAL2TnkXMCKPk3JF9vIJWAApWO5dgAUCFkAKCNhMFPlRAygcATuCmb7bH+f92/r2tNHvBAAjsQjY1+b9O/YmiHsjHw/A+FjspaGLBm0CKFuRe/lZBGzsdSQB5I8ebEPFrUoOOKhtgZjL3gVYKPEqAiA1sc9DIBEELGBvqXcB8EHAAvZWeBcAHxYBy4X+wFwrvQuAD3qwgL0iZylhOAIWsMdJrkoRsIC92i65wizGYAF7F7wLgA96sABghIAF7E17FwAfFgF7zaBNIGe8JipFDxawd8W7APggYAF79GArxRABYI8x2ErRgwXs0emolEXAMt4EzHXWuwD4oAcLAEYIWAAwQsACgBECFgCMELAAYISABQAjBCwAGLEIWLbHAObiNVEperAAYISABQAjBCwAGCFgAcAIAQsARghYADBCwAKAEYuAXWbQJpAzXhOVogcL2Jv0LgA+CFjA3hLvAuCDgAXsMVW2UgQsYI8x2EoRsIA9ArZSBCxgb6l3AfBBwAL2OMlVKYuAvWLQJpCz8y3u43lp17TjsYtCDxawd827APggYAF7fKqrFAEL2LvsXQB8ELCAPQK2UgQsYI+ArRQBC9hjDLZSBCxgj6sIKmURsDyZgLlyW+yF13BH6MECgBECFgCMELAAYISABQAjBCwAGCFgAcAIAQsARiwCli2KgbzxGu4IPVjAHoGVvksWjRKwACBdtWiUIQLAHlNP02eSW/RgAXu5rUVQIwIWGIPnkoFrHI+NZs5ZNErAohY7HY895XhsNLPLolGLbjF7wCNFr0o6q+sf15coPP8n+/4tDX9NLBvy/z9T2KZ7laTtkvbK6ARKgbYrPA7LZ2+TCuPX13T9sRp3PHv5bBtnFR6jlZI+lPTumO0uyCJg2VMdqXo/8vGOjHFfz5PFXiflDjsd1wxDBABghIAFACNsGQMARujBAoARAhYAjDBEAABG6MECgBGLgOU6WGB8TE4oAD1YADBCwAKAEQIWAIywODZiWyPp8uxNmruIxzVJt/d9f4nC4ir9i7Jc6/s6Pe/rNYWFVvrNv6pl2GItw5Y1bHKVzLrZr9sVVtKKvQZCCiYVFlbpPX69xXR6W7P0FtuZ/9/9zwv1/f+e3mI9vXM9vce9/3v9C8b0bitm2/xM0kWFx/mMpE2z3zdZB4GARWzzA7AGmyR95F2EsRnvAsa0Q9IbXTfKEAFgb4d3AcZuH/4jydtr0SgBC9irsdeem9UWjVoELAtuA3OVPrvxlHcBqaIHCwBGCFjAnueGi3BEwAL2Sh8iwCIIWMAePdhKEbCAPQK2UgQsYI8hgkoRsABghIAF7B33LgBDDVujohUCFgCMELCAPcZgK0XAAoARAhYAjBCwgD2GCCpFwAKAEQIWAIwQsIC96eE/ghIRsABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhawt8q7AGOT3gWkioAFMK7l3gWkioAFMK7L3gWkioCt14veBaAY1ySd9i4iRQRsvf5Z0oTBbYlhu+O0DVu3SVqh0R+XZbNfN8cv2R6D0+ia1dqnrKmavjZDBVdnvx7rspBU0IMFACMELAAYIWABe5xlrxQBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABixCNgrBm0iHcslLfUuIjNMSa8UPdh63SvpA0kfS/qTpJmGt0sKb6KDfuaPkr6S9AdJv+9r/wtJP4zxywEp4J21XkcN2142e1sx7/urJP1K0kuGxwaSQQ8WAIwQsABghIAFACMELAAYIWABwAgBi9hq3BxvmXcB8EHAAoARAhaxsXkhqkHAAoARAhawx4zJShGwiI0hAlSDgAUAIwQsYG+JdwHwYRGwjDdhkEveBTi44F0AfNCDRWxXvQsAYiFgEdu0dwFALAQsYmM8EtUgYBHbOu8CgFgIWMR2q3cBQCwELAAYIWDhYbl3AUAMBCw8XPYuAIjBImBZXBhAbkwmwFgELIt5ABjVSufjm0yAsQjYKYM2AZRtg/PxTQLeImCPGbQJoGxbnI9vMgGm1JNcS70LADCS7zof/6RFo6UG7N3eBQAYyb3Ox3/ZotFSA/YW7wIAjGSF8/EPWjRaasBu9y4Ai3reuwAHua2RXOOVQJ9ZNFpqwOb2hAbgyyQzSg3YGt+BkS7e8NNnMkHKKmC9t8hgrjtSwhq4g3mf4JIy68HuMWq3KcZgkRJ6sINt9S5A0hWLRq0C9pdG7QI5ogc72Ebn419SRlNlU3GPdwHALHqwg+1wPv6LVg2XHLB3eBcAIAtHrBouOWD/zbsALGijdwEO2px0NVk+ryF63B0pOWDpwaaJ8Uj0e9S7AElnrBq2DNidhm035b3GJG5UY++I67IXd8i7ABnN4pJsA9Zk8YQReS+BhhvVuOPFtHcBWNR7lo2XPEQgSS94F4Ab1DgJhB7swryXKJSkNy0bLz1g13sXgBvU2IMlYBeWwvCA6Q4s1gGbwkej+70LwBw1BmwKr4MUrfYuQNKHlo1bB+wzxu038bB3AZijxpNcuFEqu458adm4dcAeNm6/iSe9C8Acq7wLcHDZu4ARxXgTNJn7P6Kj1gewDtjzxu03lcJgOoC0mOxi0M86YE0WUGhhv3cBAL6WSofHbIpsT4yrCFIIN2Z1AekwvfZ0BKesDxAjYJ+LcIwm7vMuAJLSGHuDn1Q2JH0lxkFiBKzpWboRvONdACTld8IH3Upl8s+rMQ4Sa6JBKh8J7vIuAK6rRMFfKruNmF7/2hMrYFO5VGq3dwFI5sQn4kvl2tcLivTJOlbAnoh0nGF2iBW2vL3tXYCD3KbKWtR7k9IZf3821oFKX4tgITW+wAFv0UKtgWjnY2IGbArrw0rSJkkPehcBVCaFafOSdFHSuVgHixmwKawP2/OWdwFART71LqBP1I5e7CGClD6es+ssYG+dpFu9i+jzRsyDxQ7YByIfb5Aol2kAlTvrXUCf6J9cazzJ1e817wKAgn3fu4B5op8H8gjYHQ7HXMxj3gUABTNfrWpEZpsbLsYjYKOOgTTwP94FVGatdwEOcltkvIt6/7ODNrq01eOgXkMEF52Ou5Atkn7oXQRQkHskPeFdxDzRe6+SX8Cmtp32r8QML9jJrQc7rtROIO+RdMbjwF4PfCpTZ/tdlDThXQSKtMS7gIi+8i5gAT/yOrDnVQQpLoL9O+8CUKRadtL9F0krvIuYZ6/nwT0D1nw18RY2SfqN6vtIB1s1PJ9+I+cwW4Trgv/e18Fudj7+QnYonc0aUYbSA3af0rr8sme/nFcy8w7YY87HX8xqSRu9i0AxSh6DfVDprPc834veBXgHrBTCLEXHJd3vXUSBpr0LcLC+xX08xzKbLor+uNJdOGm/EjiZnkLAfu5dwABvKwzcAzVp8iZ4v6QD1oWM4RfeBUhpBKyU9uyevZL+w7sIZC23Xvuwqx5eUFor4823X4mcRE8lYF1mWYxgp6T/8i4C2cpty5hBJ+V+JunpWIW09APvAnpSCVgpzeti+22X9EHfv0s/M4zu5NaDXewN4VGltfXLQpJawCmlgD0laZd3EUNs1vXJCLn1SuAnt+fKQp2HTyUdil3IiE5Ket27iH4pBawk/dS7gAY2SZpRWKkdaCK3gO0fg12jMP01pV0JFnOndwHzpRawUgiwHJxV+MgElKa3vfZ9CpNuUpv+upD93gUsJMWA/UhhdascHJL0Y+8iMpPE2d3IprwLaOFRRdzeugPJnNjql2LAStJT3gWMYLfCkAFQiimlP97aL7XlT7+WasBKiZ0NRGeuDP8RoLFDkt73LmIxKQdsUmcD0RkCFl36nncBg6QcsJK0yrsAdO6ydwEoxjbvAoZJPWC/VPoTEDAaerDowtOSjngXMUzqASuFs86prtiD0RGwGNdRSb/0LqKJHAJWkh4SL0wAwUPeBTSVS8BKYajguHcRGFvKK6dZabNuBWtdLGxCYegwCzkF7DklfsYQjRAcaCu78zE5BawU9jbPZSotFkbAoo1nlOEswNwCVgpTaXd7F4HWSt6fCjbeUSI7FIwqx4CVpJ8o3Y3WMNiw1fKBfqcl/a13EW3lGrCS9JKk572LwMgYIkBTRyXd5l3EOHIOWEl6ToRsbujBoonjkv7au4hx5R6wUgjZg95FAOjMSUnf8S6iCyUErCT9vZjtlYvc9qfqAsMize1WBmsMNFVKwEphdgchm74aryKo8Xdu44KkAwrXvBehpICVQsgyXJC2GntzNf7Oozop6WYVFK5SeQErheGCPd5FYFE19uY4sTfYe0pww8IulBiwkvQjcXVBqpZ6F+CAgF3ch5L+xrsIK6UGrBSuLnjGuwjcoMawYYhgYXuV8H5aXSj9gf+FpGMKFywjDQwRQJI2K7w2i1ZyD7bnmMISZ0hD6W/qGG67KghXqY6A7dkg1i9IwXrvAhycbXGfa51X4e+gQmfnsHchsdTUmzgxe7ugvPZ8B0rwpKRXvYuIraaA7XlDYUyMLWiAODYodG6qU9MQQb+rCh9VfutcB+pQ4sf9Jo4qvM6qDFep3oDt+TsVNO8ZSMizKmA1rHHVOEQw3xGFd9kZ70KAAkwrLJD9vnchKai9B9tvmZiYABu1rCD2tqQ/F+H6NQL2uqsKExO2ehcCZOgRSQ94F5EaAvZG7yoMGUx5F1Koy94FOGhzkutS51XYWS3pTe8iUkTALu7b4npZdKPUcx1vSVoh6XPvQlJFwA72PYU508A4Slx/YavC+ss1fiJpjIAdjrUMMK6SerBTCuOt7zrXkQUCtrkJSY95F4EsldKDfVZh6Izx1oYI2NG8LmmXdxHITgk92AOSfu5dRG4I2NH9VGFuNdBU7gF7h6R/8i4iRwRsOycUhgwueBcCGPpQ4Xl+yruQXBGw47lZ4d0dzdU4kWNVi/us6LyK0WyR9FfONWSPgB3fKXGVAcrypJju2gkCtjsTCnOxgflyWa7wHYXn8UvehZSCgO3WA2LIADfKYbGX3QqrYKFDuZ/dTFFvyOD3ktY614I0pN6DZYjLCD1YO9+S9IR3EUhCqj3YkyJcTRGwtn6tsM4s6pZiD3azpDu9iygdQwT2evt/sWMCUnGrpDPeRdSAHmw8E+LjWK0+a3GfpZ1XIW1XeA4SrpEQsPExZAAPT0g67F1EbRgiiK83ZPCJuKQL9k4rrIB11buQGtGD9XOnpH/0LgJF2yPpNhGubiZmZjj34uwujb//V5uxXc8H3mMs2vP3XaHRV/7/SuOtR7BFTHd1Rw/WX29lrgPehaAIBxQmuBCuCaAHm5Z7JR1tcT96sMPV0IM9INZtTQonudLS2//rY0l3O9diaakYF+walwAmiCGCNH1H0rYRfn65VSFGYl+q5t2RaHNN65cNf+55Ea7JImDTdURhxk0TuW2d/Frk4/0s8vHma7Pp4foGP7NN0nMt2kYkjMHm4XENPgmW2xhsT4wpmyn8nms1+myuQauxXZT0F2NVhCjowebh1wrTHBfj/RG4rdOS/tWo7duVRri2dWWR768X4ZoNerD52aewpUe/XHuw/bocR/xUzYdXYmjTg13o8Vkt6fPxy0Es9GDz85Skp72LMDAj6cdjtnHfbDsphavU7hNG//ZDRxXegAjXzNCDzdufFAL35Rb3TfWB3y/p5xp9bDa1Xmu/9ZLOjXiflQpjrW9JeqjzihAFAVuv1B/4DQqz3Jp4QWn36tsELArAEAFSNSXp34f8zF0KbxQph6skbfUuAD4IWKRsl6T/W+T/fV/jL5ITyyrvAuCDgEXq1iv0Uv9h9t+Tkj6QdNCtotE1mTSAAhGwdVrjXUALrygE7bTChn05WeldAHwQsHVi25q42kyVRQEI2DpNexdQmYveBcAHAVun3BaHyV2bXWVRAAK2TovNc4cNerCVImDrtMG7gMrwiaFSzOSqFw98PCyIXSl6sPXi2sw4NnkXAD8EbL3OKfSsnvEupFC7FP6+H3kXAj8MEUAKc/pzmXaag51qt8IZCkPAoucuSb9Vukv+5eCKwt+Py7IgiSECXHdC0m2S9ngXkqmDkr4hwhV96MFiIQwZjCbG5o3IEAGLQT6WdLd3EQm7otBrBRbEEAEG2ay8lgWMaY8IVwxBDxZNrJF03ruIhHCVABohYNHULQp7X233LsQZs7LQGEMEaOqMwu6ma70LcfKECFeMiB4s2qjtKoPNko55F4H80INFGycUenNvexdi7LzC70m4ohUCFuN4QOWuZXBI0re8i0DeGCJAV76StMK7iA5MSXpW0mHvQpA/AhZd+m9JW72LGMN5Sd+W9KV3ISgDAYuu3STpgncRLTwi6U3vIlAWAhZWcnpirRK9VhjgJBesTCiMZabsFYU6CVeYoAcLa9+V9J53EQtguivMEbCwtFzXd1RN6SqD3ZJ+4l0EyscQASz1b1f9TUnbvAqZdUhhSIBwRRT0YBGb11UGWyW963BcVIyAhZeYQwZcJQAXDBHAyzcl7Tc+xpS4SgCO6MHC20ZJxw3avUPSKYN2gcbowcLb/yr0Ms922OZ2Ea5IAAGLVPylpPVjtrFbIaxZqAVJIGCRgsnZr+cU1gRo41lx+RUSwxgsUrVP0pMNfu4tha1sgOTQg0WqntLwiQm7RbgiYfRgkYM/SFo973tsQIjk0YNFDm6WtGf2v/eLcEUm6MECgBF6sABghIAFACMELAAYIWABwAgBCwBGCFgAMELAAoARAhYAjBCwAGCEgAUAIwQsABghYAHACAELAEYIWAAwQsACgBECFgCMELAAYISABQAjBCwAGPl/+zsPc9bA9AgAAAAASUVORK5CYII=" alt="Dominance Sports Group crest">
-    <h2 class="reveal-init">Careers are won in the moments<br>no one else is watching. <b>We are.</b></h2>
-  </div>
-</section>
-
 <section id="contact">
   <div class="wrap">
     <div class="eyebrow"><span class="idx">04</span><span class="rule"></span><span>Get In Touch</span></div>
@@ -425,19 +434,37 @@
       <h2 class="reveal-init">LET'S<br>TALK.</h2>
     </div>
     <div class="contact-links reveal-init">
-      <div class="contact-row">
-        <span class="label">Ben Markall</span>
-        <a href="mailto:Ben@dominancesportsgroup.com">Ben@dominancesportsgroup.com</a>
-      </div>
-      <div class="contact-row">
-        <span class="label">Kobe Chong</span>
-        <a href="mailto:Kobe@dominancesportsgroup.com">Kobe@dominancesportsgroup.com</a>
-      </div>
-      <div class="contact-row">
-        <span class="label">Phone</span>
-        <a href="tel:+447591153599">+44 7591 153599</a>
-      </div>
-    </div>
+
+  <div class="contact-row">
+    <span class="label">Ben Markall</span>
+    <a href="mailto:Ben@dominancesportsgroup.com">Ben@dominancesportsgroup.com</a>
+  </div>
+
+  <div class="contact-row">
+    <span class="label">Kobe Chong</span>
+    <a href="mailto:Kobe@dominancesportsgroup.com">Kobe@dominancesportsgroup.com</a>
+  </div>
+
+  <div class="contact-row">
+    <span class="label">Phone</span>
+    <a href="tel:+447591153599">+44 7591 153599</a>
+  </div>
+
+  <div class="contact-row contact-social">
+    <span class="label">Instagram</span>
+    <a href="https://www.instagram.com/dominancesportsgroup/" target="_blank" rel="noopener noreferrer" class="instagram-link">
+      
+      <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <circle cx="17.5" cy="6.5" r="1"></circle>
+      </svg>
+
+      <span>@dominancesportsgroup</span>
+    </a>
+  </div>
+
+</div>
   </div>
 </section>
 
@@ -460,17 +487,33 @@
         </div>
         <div class="foot-col">
           <h4>Menu</h4>
-          <a href="#who">Who We Are</a>
           <a href="#people">The People</a>
-          <a href="#why">Why Join</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Dominance Sports Group</span>
-      <span>Sports Representation & Management</span>
-    </div>
+
+  <span>© 2026 Dominance Sports Group</span>
+
+  <a
+    href="https://www.instagram.com/dominancesportsgroup/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="foot-instagram"
+  >
+    <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+      <circle cx="12" cy="12" r="4.2"></circle>
+      <circle cx="17.5" cy="6.5" r="1"></circle>
+    </svg>
+
+    <span>@dominancesportsgroup</span>
+  </a>
+
+  <span>Sports Representation & Management</span>
+
+</div>
   </div>
 </footer>
 
